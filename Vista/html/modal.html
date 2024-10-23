@@ -1,0 +1,24 @@
+{{ define "Modal"}}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="../css/modal.css" />
+    <script src="../js/security.js"></script>
+  </head>
+  <body>
+    <div class="modal">
+      <div class="modal-content">
+        <h2>{{.Title}}</h2>
+        <p>{{.Message}}</p>
+        <button onclick="window.location.href='{{.RedirectURL}}'">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
+
+{{end}}

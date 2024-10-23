@@ -1,0 +1,122 @@
+/* Reset para márgenes y rellenos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form h2 {
+  margin-bottom: 2rem;
+  font-size: 24px;
+  letter-spacing: 1px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 10%;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  font-size: 16px;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.input-group input::placeholder {
+  color: transparent; /* Ocultamos el placeholder para evitar la superposición */
+}
+
+.input-group input:focus::placeholder {
+  color: rgba(
+    255,
+    255,
+    255,
+    0.3
+  ); /* Muestra el placeholder solo cuando el campo está vacío y enfocado */
+}
+
+.input-group input:focus {
+  border-color: #00ffcc;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+/* Ajuste de la posición del label al enfocar o al tener contenido */
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 0.75rem;
+  font-size: 12px;
+  color: #00ffcc;
+}
+
+button {
+  width: 100%;
+  padding: 0.75rem;
+  background: #00ffcc;
+  color: #0f0f0f;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+
+button:active::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+button:hover {
+  background-color: #00e6b8;
+}

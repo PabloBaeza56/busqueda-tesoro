@@ -1,0 +1,53 @@
+{{ define "Registro"}}
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Treasure Hunt</title>
+    <link rel="stylesheet" href="../css/index.css" />
+    <script src="../js/security.js"></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <form class="login-form" action="/" method="POST">
+        <h2>Tu aventura inicia aquí...</h2>
+
+        <div class="input-group">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Russel Bonilla"
+            required
+          />
+          <label for="username">Usuario</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="text"
+            id="contact_method_1"
+            name="contact_method_1"
+            placeholder="soy_russ"
+            required
+          />
+          <label for="contact_method_1">Método de Contacto 1</label>
+        </div>
+        <div class="input-group">
+          <input
+            type="text"
+            id="contact_method_2"
+            name="contact_method_2"
+            placeholder="RuBo"
+            required
+          />
+          <label for="contact_method_2">Método de Contacto 2</label>
+        </div>
+
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </body>
+</html>
+{{end}}

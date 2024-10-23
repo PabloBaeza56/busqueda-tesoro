@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 90%; /* Aumentar el ancho en móviles */
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  color: #00ffcc;
+  font-size: 28px; /* Ajustar tamaño de fuente para h1 */
+}
+
+.ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ranking-table th,
+.ranking-table td {
+  padding: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.ranking-table th {
+  background: rgba(0, 255, 204, 0.2);
+  color: #0f0f0f;
+}
+
+.ranking-table tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ranking-table tbody tr:hover {
+  background: rgba(0, 255, 204, 0.1);
+  transition: background 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .ranking-table th,
+  .ranking-table td {
+    padding: 0.75rem;
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+  }
+
+  h1 {
+    font-size: 24px; /* Tamaño de fuente para h1 en móviles */
+  }
+
+  .container {
+    padding: 1rem; /* Reducir el padding en móviles */
+  }
+}
