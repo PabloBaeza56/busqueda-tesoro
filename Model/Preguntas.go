@@ -14,7 +14,7 @@ func InicializarPreguntas(subrouter *mux.Router) {
 		{
 			URLsecreta:        "pregunta4",
 			PreguntaTexto:     "¿Quién es el cantante?",
-			MultimediaURL:     "https://youtu.be/E4WlUXrJgy4",
+			MultimediaURL:     "https://www.youtube.com/embed/E4WlUXrJgy4",
 			Tipo:              TipoVideo,
 			RespuestaCorrecta: "Ricky",
 		},
