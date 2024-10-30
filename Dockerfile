@@ -1,31 +1,17 @@
-# Etapa 1: Construcción
-FROM golang:latest AS builder
+# Utiliza una imagen base de Go
+FROM golang:latest
 
-# Establece el directorio de trabajo en la imagen de construcción
+# Establece el directorio de trabajo dentro del contenedor
 WORKDIR /go/src/app
 
-# Copia y descarga solo los archivos de dependencias para caché eficiente
-COPY go.mod go.sum ./
-RUN go mod download
-
-# Copia el resto del código al directorio de trabajo del contenedor
+# Copia todos los archivos del directorio actual al directorio de trabajo del contenedor
 COPY . .
 
-# Compila el código Go
+# Compila el código de Go dentro del contenedor
 RUN go build -o app .
 
-# Etapa 2: Imagen de producción
-FROM alpine:latest
-
-# Instala dependencias necesarias para ejecutar la aplicación
-RUN apk --no-cache add ca-certificates
-
-# Copia el binario compilado desde la etapa de construcción
-WORKDIR /root/
-COPY --from=builder /go/src/app/app .
-
-# Expone el puerto de la aplicación
+# Expone el puerto en el que el servidor Go va a escuchar
 EXPOSE 8080
 
-# Comando por defecto para ejecutar la aplicación
+# Comando por defecto para ejecutar cuando se inicie el contenedor
 CMD ["./app"]

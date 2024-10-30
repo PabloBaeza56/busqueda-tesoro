@@ -7,7 +7,7 @@ window.onload = function () {
   };
 
   // Evitar que el usuario utilice el click derecho
-  //document.addEventListener("contextmenu", function (e) {
-   // e.preventDefault();
-  //});
+  document.addEventListener("contextmenu", function (e) {
+    e.preventDefault();
+  });
 };
