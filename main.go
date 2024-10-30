@@ -15,7 +15,7 @@ import (
 )
 
 const (
-	serverAddr   = ":3003"
+	serverAddr   = ":8080"
 	readTimeout  = 2 * time.Second
 	writeTimeout = 2 * time.Second
 	idleTimeout  = 5 * time.Second
