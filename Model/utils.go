@@ -52,13 +52,27 @@ func calcularPuntos(id_pregunta string) int {
 	case 0:
 		return 100
 	case 1:
-		return 80
+		return 95
 	case 2:
-		return 60
+		return 90
 	case 3:
-		return 40
+		return 85
+	case 4:
+		return 80
+	case 5:
+		return 75
+	case 6:
+		return 70
+	case 7:
+		return 65
+	case 8:
+		return 60
+	case 9:
+		return 55
+	case 10:
+		return 50
 	default:
-		return 10
+		return 30
 	}
 
 }
