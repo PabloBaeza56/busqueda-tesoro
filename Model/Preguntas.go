@@ -29,7 +29,7 @@ func InicializarPreguntas(subrouter *mux.Router) {
 
 			URLsecreta:        "UpXMf3Af0rLC",
 			PreguntaTexto:     "Después de 2 siglos Mozart estrenó una pieza llena de misterios, los secretos más oscuros solo se revelan a quien escucha lento y con atención",
-			MultimediaURL:     "https://youtu.be/f097MHp9TLQ?si=YeA2MqJgfFOlWNc6",
+			MultimediaURL:     "https://www.youtube.com/embed/f097MHp9TLQ",
 			Tipo:              TipoVideo,
 			RespuestaCorrecta: "clave",
 		},
