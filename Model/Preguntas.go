@@ -26,10 +26,9 @@ func InicializarPreguntas(subrouter *mux.Router) {
 			RespuestaCorrecta: "Ernesto Guerrero",
 		},
 		{
-			//TODO: Agregar video con música de mozart
 			URLsecreta:        "pregunta4",
 			PreguntaTexto:     "Después de 2 siglos Mozart estrenó una pieza llena de misterios, los secretos más oscuros solo se revelan a quien escucha lento y con atención",
-			MultimediaURL:     "https://www.youtube.com/embed/E4WlUXrJgy4",
+			MultimediaURL:     "https://youtu.be/f097MHp9TLQ?si=YeA2MqJgfFOlWNc6",
 			Tipo:              TipoVideo,
 			RespuestaCorrecta: "clave",
 		},
