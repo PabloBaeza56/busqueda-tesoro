@@ -26,9 +26,9 @@ func InicializarPreguntas(subrouter *mux.Router) {
 			RespuestaCorrecta: "Ernesto Guerrero",
 		},
 		{
-			//TODO
+			//TODO: Agregar video con música de mozart
 			URLsecreta:        "pregunta4",
-			PreguntaTexto:     "Los secretos más oscuros solo se revelan a quien escucha lento y con atención",
+			PreguntaTexto:     "Después de 2 siglos Mozart estrenó una pieza llena de misterios, los secretos más oscuros solo se revelan a quien escucha lento y con atención",
 			MultimediaURL:     "https://www.youtube.com/embed/E4WlUXrJgy4",
 			Tipo:              TipoVideo,
 			RespuestaCorrecta: "clave",
@@ -48,24 +48,23 @@ func InicializarPreguntas(subrouter *mux.Router) {
 			RespuestaCorrecta: "FMAT UNIDA",
 		},
 		{
-			//TODO: mona lisa
 			URLsecreta:        "pregunta7",
 			PreguntaTexto:     "A veces las respuestas están justo frente a tus ojos, el arte es ver desde otra perspectiva",
 			MultimediaURL:     "https://i.ibb.co/JszjdPZ/L.png",
 			Tipo:              TipoImagen,
-			RespuestaCorrecta: "Ricky",
+			RespuestaCorrecta: "NO_TE_RINDAS",
 		},
 		{
 			URLsecreta:        "pregunta8",
 			PreguntaTexto:     "Vamos a dar un paseo: 29X4+9G Mérida, Yucatán, llegaremos a la __________",
-			MultimediaURL:     "https://www.youtube.com/embed/E4WlUXrJgy4",
+			MultimediaURL:     "https://www.youtube.com/embed/Zcf5nyappYk?si=iFc1ay6exxJJ1AMG",
 			Tipo:              TipoVideo,
 			RespuestaCorrecta: "biblioteca",
 		},
 		{
 			URLsecreta:        "pregunta9",
 			PreguntaTexto:     "Sólo PIensa, y PIensa y PIensa, esa es la PIsta: 141592_____897932384626",
-			MultimediaURL:     "https://www.youtube.com/embed/E4WlUXrJgy4",
+			MultimediaURL:     "https://www.youtube.com/embed/3HRkKznJoZA?si=mHt706_bxtAO6JX6",
 			Tipo:              TipoVideo,
 			RespuestaCorrecta: "6535",
 		},
@@ -88,7 +87,7 @@ func InicializarPreguntas(subrouter *mux.Router) {
 			PreguntaTexto:     "Una noticia del año 2027 es tu siguiente pista: <a href=\"https://drive.google.com/uc?export=download&id=1k2rZdmcPG_9mbOH6SJt-JMfGoKFSb782\" target=\"_blank\">Ver</a>",
 			MultimediaURL:     "https://uvn-brightspot.s3.amazonaws.com/assets/vixes/btg/curiosidades.batanga.com/files/Es-posible-viajar-a-traves-del-tiempo-6.jpg",
 			Tipo:              TipoImagen,
-			RespuestaCorrecta: "Ricky",
+			RespuestaCorrecta: "CREER",
 		},
 		{
 			URLsecreta:        "pregunta13",
