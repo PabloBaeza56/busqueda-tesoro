@@ -11,3 +11,10 @@ window.onload = function () {
     e.preventDefault();
   });
 };
+
+//Desactivar el botón de entrar después de oprimirlo
+function desactivarBotonDeEnvio() {
+  const boton = document.getElementById('botonEnvio');
+  boton.disabled = true;
+  boton.textContent = 'Procesando...';
+}

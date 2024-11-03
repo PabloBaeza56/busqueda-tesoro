@@ -44,7 +44,7 @@ func (a *CookieManager) leerNombreUsuario() string {
 		return ""
 	}
 
-	return userData.Username
+	return userData.NombreUsuario
 }
 
 func (a *CookieManager) leerMetodoContacto1() string {
@@ -58,7 +58,7 @@ func (a *CookieManager) leerMetodoContacto1() string {
 		return ""
 	}
 
-	return userData.ContactMethod1
+	return userData.Licenciatura
 }
 
 func (a *CookieManager) leerMetodoContacto2() string {
@@ -72,7 +72,7 @@ func (a *CookieManager) leerMetodoContacto2() string {
 		return ""
 	}
 
-	return userData.ContactMethod2
+	return userData.MetodoContacto
 }
 
 func (a *CookieManager) marcarPreguntaComoRespondida(preguntaField string) {

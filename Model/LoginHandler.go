@@ -6,17 +6,17 @@ import (
 )
 
 type UserData struct {
-	Username       string `bson:"username"`
-	ContactMethod1 string `bson:"contact_method_1"`
-	ContactMethod2 string `bson:"contact_method_2"`
+	NombreUsuario  string `bson:"NombreUsuario"`
+	Licenciatura   string `bson:"Licenciatura"`
+	MetodoContacto string `bson:"MetodoContacto"`
 	Puntos         int    `bson:"puntos"`
 	Preguntas      map[string]bool
 }
 
 const (
-	NOMBRE_USUARIO    = "username"
-	METODO_CONTACTO_1 = "contact_method_1"
-	METODO_CONTACTO_2 = "contact_method_2"
+	NOMBRE_USUARIO  = "NombreUsuario"
+	LICENCIATURA    = "Licenciatura"
+	METODO_CONTACTO = "MetodoContacto"
 )
 
 func HomeHandlerFormulario(preguntas []string) http.HandlerFunc {
@@ -27,14 +27,14 @@ func HomeHandlerFormulario(preguntas []string) http.HandlerFunc {
 			return
 		}
 
-		username := r.FormValue(NOMBRE_USUARIO)
-		contactMethod1 := r.FormValue(METODO_CONTACTO_1)
-		contactMethod2 := r.FormValue(METODO_CONTACTO_2)
+		nombreUsuario := r.FormValue(NOMBRE_USUARIO)
+		licenciatura := r.FormValue(LICENCIATURA)
+		MetodoContacto := r.FormValue(METODO_CONTACTO)
 
 		userData := UserData{
-			Username:       username,
-			ContactMethod1: contactMethod1,
-			ContactMethod2: contactMethod2,
+			NombreUsuario:  nombreUsuario,
+			Licenciatura:   licenciatura,
+			MetodoContacto: MetodoContacto,
 			Puntos:         0,
 		}
 

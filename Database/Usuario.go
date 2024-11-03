@@ -9,9 +9,9 @@ import (
 )
 
 const (
-	NOMBRE_USUARIO    = "username"
-	METODO_CONTACTO_1 = "contact_method_1"
-	METODO_CONTACTO_2 = "contact_method_2"
+	NOMBRE_USUARIO  = "NombreUsuario"
+	LICENCIATURA    = "Licenciatura"
+	METODO_CONTACTO = "MetodoContacto"
 )
 
 func (a *SingleDatabase) CrearNuevoUsuario(data any) {
@@ -22,12 +22,12 @@ func (a *SingleDatabase) CrearNuevoUsuario(data any) {
 	}
 }
 
-func (a *SingleDatabase) AniadirPuntosUsuario(username, contactMethod1, contactMethod2 string, puntosSumar int) error {
+func (a *SingleDatabase) AniadirPuntosUsuario(nombreUsuario, licenciatura, contacto string, puntosSumar int) error {
 	collection := a.accederColeccion("Busqueda-Tesoro", "Usuarios")
 	filtro := bson.D{
-		{Key: NOMBRE_USUARIO, Value: username},
-		{Key: METODO_CONTACTO_1, Value: contactMethod1},
-		{Key: METODO_CONTACTO_2, Value: contactMethod2},
+		{Key: NOMBRE_USUARIO, Value: nombreUsuario},
+		{Key: LICENCIATURA, Value: licenciatura},
+		{Key: METODO_CONTACTO, Value: contacto},
 	}
 
 	actualizacion := bson.D{
@@ -43,7 +43,7 @@ func (a *SingleDatabase) AniadirPuntosUsuario(username, contactMethod1, contactM
 
 	// Verificar si el documento fue encontrado y actualizado
 	if resultado.MatchedCount == 0 {
-		return fmt.Errorf("no se encontró el documento para el usuario %s con los métodos de contacto proporcionados", username)
+		return fmt.Errorf("no se encontró el documento para el usuario %s con los métodos de contacto proporcionados", nombreUsuario)
 	}
 
 	return nil

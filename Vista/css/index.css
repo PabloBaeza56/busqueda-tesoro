@@ -37,7 +37,8 @@ body {
   margin-bottom: 10%;
 }
 
-.input-group input {
+.input-group input,
+.input-group select {
   width: 100%;
   padding: 0.75rem;
   background: transparent;
@@ -47,6 +48,10 @@ body {
   border-radius: 8px;
   outline: none;
   transition: border-color 0.3s;
+}
+.input-group option{
+  background: rgb(39, 39, 39);
+  color: #fff;
 }
 
 .input-group input::placeholder {
@@ -78,6 +83,8 @@ body {
 
 /* Ajuste de la posición del label al enfocar o al tener contenido */
 .input-group input:focus + label,
+.input-group select:focus + label,
+.input-group select:valid + label,
 .input-group input:not(:placeholder-shown) + label {
   top: -10px;
   left: 0.75rem;

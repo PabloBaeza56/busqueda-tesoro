@@ -11,41 +11,43 @@
   </head>
   <body>
     <div class="login-container">
-      <form class="login-form" action="/" method="POST">
+      <form class="login-form" action="/" method="POST" onsubmit="desactivarBotonDeEnvio()">
         <h2>Tu aventura inicia aquí...</h2>
 
         <div class="input-group">
           <input
             type="text"
-            id="username"
-            name="username"
-            placeholder="Russel Bonilla"
+            id="NombreUsuario"
+            name="NombreUsuario"
+            placeholder="Nombre"
             required
           />
-          <label for="username">Usuario</label>
+          <label for="NombreUsuario">Usuario</label>
+        </div>
+        <div class="input-group">
+          <select name="Licenciatura" id="Licenciatura" required>
+            <option value="" disabled selected></option>
+            <option value="LIS">LIS</option>
+            <option value="LCC">LCC</option>
+            <option value="LIC">LIC</option>
+            <option value="LA">LA</option>
+            <option value="LEM">LEM</option>
+            <option value="LM">LM</option>
+          </select>
+          <label for="Licenciatura">Licenciatura</label>
         </div>
         <div class="input-group">
           <input
             type="text"
-            id="contact_method_1"
-            name="contact_method_1"
-            placeholder="LIS"
+            id="MetodoContacto"
+            name="MetodoContacto"
+            placeholder="correo@ejemplo.com"
             required
           />
-          <label for="contact_method_1">Licenciatura</label>
-        </div>
-        <div class="input-group">
-          <input
-            type="text"
-            id="contact_method_2"
-            name="contact_method_2"
-            placeholder="russbonilla_"
-            required
-          />
-          <label for="contact_method_2">Método de Contacto</label>
+          <label for="MetodoContacto">Método de Contacto</label>
         </div>
 
-        <button type="submit">Entrar</button>
+        <button type="submit" id="botonEnvio">Entrar</button>
       </form>
     </div>
   </body>

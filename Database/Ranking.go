@@ -11,7 +11,7 @@ import (
 
 type RankingData struct {
 	Posicion             int    `json:"posicion"`
-	Username             string `json:"username"`
+	NombreUsuario        string `json:"NombreUsuario"`
 	Puntos               int    `json:"puntos"`
 	PreguntasRespondidas int    `json:"personas_respondidas"`
 }
@@ -28,9 +28,9 @@ func (a *SingleDatabase) ObtenerRanking() ([]RankingData, error) {
 
 	for cursor.Next(context.TODO()) {
 		var userData struct {
-			Username  string          `bson:"username"`
-			Puntos    int             `bson:"puntos"`
-			Preguntas map[string]bool `bson:"preguntas"` // Map de preguntas
+			NombreUsuario string          `bson:"NombreUsuario"`
+			Puntos        int             `bson:"puntos"`
+			Preguntas     map[string]bool `bson:"preguntas"` // Map de preguntas
 		}
 		if err := cursor.Decode(&userData); err != nil {
 			log.Fatal(err)
@@ -47,7 +47,7 @@ func (a *SingleDatabase) ObtenerRanking() ([]RankingData, error) {
 		// Ingresar al usuario con un ranking temporal
 		ranking = append(ranking, RankingData{
 			Posicion:             0,
-			Username:             userData.Username,
+			NombreUsuario:        userData.NombreUsuario,
 			Puntos:               userData.Puntos,
 			PreguntasRespondidas: preguntasRespondidas,
 		})
