@@ -56,7 +56,23 @@ h1 {
   transition: background 0.3s ease;
 }
 
-@media (max-width: 600px) {
+@media only screen and (max-width: 420px) {
+  .ranking-table th,
+  .ranking-table td {
+    padding: 0.25rem;
+    font-size: 10px; /* Tamaño de fuente más pequeño */
+  }
+
+  h1 {
+    font-size: 20px; /* Tamaño de fuente para h1 en móviles */
+  }
+
+  .container {
+    padding: .5rem; /* Reducir el padding en móviles */
+  }
+}
+
+@media only screen and (max-width: 600px) and (min-width: 420px){
   .ranking-table th,
   .ranking-table td {
     padding: 0.75rem;
