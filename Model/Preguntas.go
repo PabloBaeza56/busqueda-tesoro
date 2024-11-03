@@ -20,10 +20,10 @@ func InicializarPreguntas(subrouter *mux.Router) {
 		},
 		{
 			URLsecreta:        "vae212t2uRJV",
-			PreguntaTexto:     "¿Cómo se llama el actual director de la facultad? (sólo 1 nombre y 1 apellido)",
+			PreguntaTexto:     "¿Cómo se llama el actual director de la facultad? (nombre completo)",
 			MultimediaURL:     "https://fastly.4sqi.net/img/general/600x600/YKHDyTPS-wazfy8ZOid8oF49X23jqzGhczQhO64MyWQ.jpg",
 			Tipo:              TipoImagen,
-			RespuestaCorrecta: "Ernesto Guerrero",
+			RespuestaCorrecta: "Ernesto Antonio Guerrero Lara",
 		},
 		{
 
