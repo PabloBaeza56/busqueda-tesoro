@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"sort"
 
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -43,12 +44,28 @@ func (a *SingleDatabase) ObtenerRanking() ([]RankingData, error) {
 			}
 		}
 
+		// Ingresar al usuario con un ranking temporal
 		ranking = append(ranking, RankingData{
-			Posicion:             len(ranking) + 1, // O ajusta según la lógica de tu ranking
+			Posicion:             0,
 			Username:             userData.Username,
 			Puntos:               userData.Puntos,
 			PreguntasRespondidas: preguntasRespondidas,
 		})
+	}
+
+	// Ordenar al ranking (por puntos) de mayor a menor
+	sort.Slice(ranking, func(i, j int) bool {
+		return ranking[i].Puntos > ranking[j].Puntos
+	})
+
+	// Truncar a ranking a un máximo de 10 usuarios
+	if len(ranking) > 10 {
+		ranking = ranking[0:9]
+	}
+
+	//Asignar la posición de los usuarios de acuerdo a su orden en el arreglo
+	for index := range ranking {
+		ranking[index].Posicion = index + 1
 	}
 
 	if err := cursor.Err(); err != nil {
