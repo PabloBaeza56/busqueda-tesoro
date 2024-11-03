@@ -2,6 +2,7 @@ package Model
 
 import (
 	"net/http"
+	"strings"
 	Database "tresure-hunt/Database"
 	"unicode"
 )
@@ -46,6 +47,9 @@ func manejadorRespuestas(respuestaEsperada string, w http.ResponseWriter, r *htt
 }
 
 func normalizarString(input string) string {
+	// Eliminar espacios al principio y al final
+	input = strings.TrimSpace(input)
+
 	var normalized string
 
 	for _, r := range input {
