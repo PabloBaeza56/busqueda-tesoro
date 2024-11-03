@@ -34,7 +34,8 @@ func ArranqueInicial(r *mux.Router) {
 	subrouter.Use(verificarSiElUsuarioYaSeRegistro)
 
 	r.HandleFunc("/", modelo.HomeHandler).Methods("GET")
-	subrouter.HandleFunc("/ranking", modelo.RankingHandler).Methods("GET")
+	subrouter.HandleFunc("/ranking", modelo.Top10RanckingHandler).Methods("GET")
+	subrouter.HandleFunc("/rankingCompleto", modelo.CompleteRankingHandler).Methods("GET")
 
 	modelo.InicializarPreguntas(subrouter)
 
@@ -52,7 +53,7 @@ func ArranqueInicial(r *mux.Router) {
 
 func obtenerRutasPreguntas(r *mux.Router) []string {
 	rutasExistentes := obtenerTodasLasRutas(r)
-	elementosAEliminar := []string{"/css/", "/", "/js/", "/ranking"}
+	elementosAEliminar := []string{"/css/", "/", "/js/", "/ranking", "/rankingCompleto"}
 
 	resultado := filtrarYEliminarRepetidos(rutasExistentes, elementosAEliminar)
 	return resultado

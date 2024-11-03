@@ -16,7 +16,7 @@ type RankingData struct {
 	PreguntasRespondidas int    `json:"personas_respondidas"`
 }
 
-func (a *SingleDatabase) ObtenerRanking() ([]RankingData, error) {
+func (a *SingleDatabase) ObtenerTop10Ranking() ([]RankingData, error) {
 
 	collection := a.accederColeccion("Busqueda-Tesoro", "Usuarios")
 	var ranking []RankingData
@@ -70,6 +70,57 @@ func (a *SingleDatabase) ObtenerRanking() ([]RankingData, error) {
 
 	if err := cursor.Err(); err != nil {
 		return nil, fmt.Errorf("error al iterar sobre el cursor: %w", err)
+	}
+
+	return ranking, nil
+}
+
+func (a *SingleDatabase) ObtenerRankingCompleto() ([]RankingData, error) {
+	collection := a.accederColeccion("Busqueda-Tesoro", "Usuarios")
+	var ranking []RankingData
+	cursor, err := collection.Find(context.TODO(), bson.D{})
+	if err != nil {
+		return nil, fmt.Errorf("error al obtener el ranking: %w", err)
+	}
+	defer cursor.Close(context.TODO())
+
+	for cursor.Next(context.TODO()) {
+		var userData struct {
+			NombreUsuario string          `bson:"NombreUsuario"`
+			Puntos        int             `bson:"puntos"`
+			Preguntas     map[string]bool `bson:"preguntas"` // Map de preguntas
+		}
+		if err := cursor.Decode(&userData); err != nil {
+			log.Fatal(err)
+		}
+
+		// Contar preguntas respondidas
+		preguntasRespondidas := 0
+		for _, respondido := range userData.Preguntas {
+			if respondido {
+				preguntasRespondidas++
+			}
+		}
+
+		ranking = append(ranking, RankingData{
+			NombreUsuario:        userData.NombreUsuario,
+			Puntos:               userData.Puntos,
+			PreguntasRespondidas: preguntasRespondidas,
+		})
+	}
+
+	if err := cursor.Err(); err != nil {
+		return nil, fmt.Errorf("error al iterar sobre el cursor: %w", err)
+	}
+
+	// Ordenar el ranking de menor a mayor en puntos
+	sort.Slice(ranking, func(i, j int) bool {
+		return ranking[i].Puntos > ranking[j].Puntos
+	})
+
+	// Asignar posiciones según el orden
+	for i := range ranking {
+		ranking[i].Posicion = i + 1
 	}
 
 	return ranking, nil

@@ -2,7 +2,9 @@ package Model
 
 import (
 	"net/http"
+	"strings"
 	Database "tresure-hunt/Database"
+	"unicode"
 )
 
 func verificarPreguntaRespondida(w http.ResponseWriter, r *http.Request) bool {
@@ -24,7 +26,7 @@ func manejadorRespuestas(respuestaEsperada string, w http.ResponseWriter, r *htt
 		return
 	}
 	respuestaRecibida := r.FormValue("respuesta")
-	if respuestaRecibida == respuestaEsperada {
+	if normalizarString(respuestaRecibida) == normalizarString(respuestaEsperada) {
 		cookieManager := &CookieManager{w, r}
 		cookieManager.marcarPreguntaComoRespondida(id_pregunta)
 
@@ -42,6 +44,38 @@ func manejadorRespuestas(respuestaEsperada string, w http.ResponseWriter, r *htt
 	} else {
 		MostrarModal(w, "Respuesta incorrecta", "Por favor, intenta de nuevo.", id_pregunta)
 	}
+}
+
+func normalizarString(input string) string {
+	// Eliminar espacios al principio y al final
+	input = strings.TrimSpace(input)
+
+	var normalized string
+
+	for _, r := range input {
+		// Convertir a minúscula
+		lower := unicode.ToLower(r)
+
+		// Remover acentos
+		switch lower {
+		case 'á', 'à', 'â', 'ä', 'ã':
+			normalized += "a"
+		case 'é', 'è', 'ê', 'ë':
+			normalized += "e"
+		case 'í', 'ì', 'î', 'ï':
+			normalized += "i"
+		case 'ó', 'ò', 'ô', 'ö', 'õ':
+			normalized += "o"
+		case 'ú', 'ù', 'û', 'ü':
+			normalized += "u"
+		case 'ñ':
+			normalized += "n"
+		default:
+			normalized += string(lower)
+		}
+	}
+
+	return normalized
 }
 
 func calcularPuntos(id_pregunta string) int {

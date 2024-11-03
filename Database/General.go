@@ -39,10 +39,10 @@ func GetInstanceDatabase() *SingleDatabase {
 
 			singleDatabaseInstance = &SingleDatabase{clienteDirecto: clientValue}
 		} else {
-			fmt.Println("Single singleDatabase already created.")
+			//fmt.Println("Single singleDatabase already created.")
 		}
 	} else {
-		fmt.Println("Single singleDatabase already created.")
+		//fmt.Println("Single singleDatabase already created.")
 	}
 
 	return singleDatabaseInstance

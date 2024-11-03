@@ -18,9 +18,15 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	Templates.ExecuteTemplate(w, "Registro", nil)
 }
 
-func RankingHandler(w http.ResponseWriter, r *http.Request) {
+func Top10RanckingHandler(w http.ResponseWriter, r *http.Request) {
 	database := Database.GetInstanceDatabase()
-	data, _ := database.ObtenerRanking()
+	data, _ := database.ObtenerTop10Ranking()
+	Templates.ExecuteTemplate(w, "Ranking", data)
+}
+
+func CompleteRankingHandler(w http.ResponseWriter, r *http.Request) {
+	database := Database.GetInstanceDatabase()
+	data, _ := database.ObtenerRankingCompleto()
 	Templates.ExecuteTemplate(w, "Ranking", data)
 }
 
