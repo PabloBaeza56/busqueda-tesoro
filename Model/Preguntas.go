@@ -63,7 +63,7 @@ func InicializarPreguntas(subrouter *mux.Router) {
 		},
 		{
 			URLsecreta:        "ylHrFR0vNteY",
-			PreguntaTexto:     "Sólo PIensa, y PIensa y PIensa, esa es la PIsta: 141592_____897932384626",
+			PreguntaTexto:     "Sólo PIensa, esa es la PIsta: 1https://www.ngenespanol.com/wp-content/uploads/2023/09/la-obsesion-con-el-imperio-romano-ha-estado-de-moda-por-siglos-incluso-antes-de-su-caida-770x433.jpeg41592_____897932384626",
 			MultimediaURL:     "https://www.youtube.com/embed/3HRkKznJoZA?si=mHt706_bxtAO6JX6",
 			Tipo:              TipoVideo,
 			RespuestaCorrecta: "6535",
@@ -71,7 +71,7 @@ func InicializarPreguntas(subrouter *mux.Router) {
 		{
 			URLsecreta:        "zSWuYc4JSj8r",
 			PreguntaTexto:     "Escribe en número la forma de que al agregarle un uno al veinte, este sea un número más pequeño. (piensa afuera de la caja, en mayúsculas)",
-			MultimediaURL:     "https://www.youtube.com/embed/E4WlUXrJgy4",
+			MultimediaURL:     "https://img.huffingtonpost.es/files/image_1200_720/uploads/2024/04/18/tres-emperadores-romanos-observando-el-amanecer.jpeg",
 			Tipo:              TipoImagen,
 			RespuestaCorrecta: "XIX",
 		},
