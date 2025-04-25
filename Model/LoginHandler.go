@@ -48,7 +48,12 @@ func HomeHandlerFormulario(preguntas []string) http.HandlerFunc {
 		}
 
 		database := Database.GetInstanceDatabase()
-		database.CrearNuevoUsuario(userData)
+		// Crear usuario en la base de datos
+		err = database.CrearNuevoUsuario(userData)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusConflict)
+			return
+		}
 
 		http.SetCookie(w, cookie)
 		http.Redirect(w, r, "/ranking", http.StatusSeeOther)

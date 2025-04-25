@@ -3,7 +3,6 @@ package Database
 import (
 	"context"
 	"fmt"
-	"log"
 
 	"go.mongodb.org/mongo-driver/bson"
 )
@@ -14,12 +13,39 @@ const (
 	METODO_CONTACTO = "MetodoContacto"
 )
 
-func (a *SingleDatabase) CrearNuevoUsuario(data any) {
+func (a *SingleDatabase) CrearNuevoUsuario(data any) error {
 	collection := a.accederColeccion("Busqueda-Tesoro", "Usuarios")
-	_, err := collection.InsertOne(context.TODO(), data)
+
+	// Convertir cualquier struct (como UserData) a bson.M
+	raw, err := bson.Marshal(data)
 	if err != nil {
-		log.Fatal(err)
+		return fmt.Errorf("error al serializar datos del usuario: %w", err)
 	}
+
+	var doc bson.M
+	err = bson.Unmarshal(raw, &doc)
+	if err != nil {
+		return fmt.Errorf("error al convertir a bson.M: %w", err)
+	}
+
+	filtro := bson.D{
+		{Key: NOMBRE_USUARIO, Value: doc[NOMBRE_USUARIO]},
+		{Key: LICENCIATURA, Value: doc[LICENCIATURA]},
+		{Key: METODO_CONTACTO, Value: doc[METODO_CONTACTO]},
+	}
+
+	var usuarioExistente bson.M
+	err = collection.FindOne(context.TODO(), filtro).Decode(&usuarioExistente)
+	if err == nil {
+		return fmt.Errorf("el usuario ya existe")
+	}
+
+	_, err = collection.InsertOne(context.TODO(), data)
+	if err != nil {
+		return fmt.Errorf("error al insertar usuario: %w", err)
+	}
+
+	return nil
 }
 
 func (a *SingleDatabase) AniadirPuntosUsuario(nombreUsuario, licenciatura, contacto string, puntosSumar int) error {
